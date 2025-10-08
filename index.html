@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elymedicare Pharmacy (ECP) – Regulatory & Clinical Research Services Across Africa</title>
     <meta name="description" content="Elymedicare Pharmacy: Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -15,22 +15,27 @@
         }
 
         :root {
-            --primary: #0b6cf6;
-            --primary-dark: #0952c9;
-            --primary-light: #e0f2fe;
-            --accent: #10b981;
-            --accent-dark: #059669;
+            --primary: #2c3e50;
+            --primary-dark: #1a252f;
+            --primary-light: #ecf0f1;
+            --accent: #e67e22;
+            --accent-dark: #d35400;
+            --secondary: #8e44ad;
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --bg-light: #f8fafc;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
             background-color: var(--bg-light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
         }
 
         .bg-animation {
@@ -211,6 +216,10 @@ nav {
     align-items: center;
 }
 
+nav a {
+    text-decoration: none !important;
+}
+
         nav > a:not(.cta-btn):not(.dropdown > a) {
             color: var(--text-muted);
             text-decoration: none;
@@ -224,22 +233,7 @@ nav {
             color: var(--primary);
         }
 
-        nav > a:not(.cta-btn):not(.dropdown > a)::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -10px;
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            transform: translateX(-50%) scale(0);
-            transition: transform 0.3s ease;
-        }
-
-        nav > a:not(.cta-btn):not(.dropdown > a):hover::after {
-            transform: translateX(-50%) scale(1);
-        }        /* Dropdown styles */
+        /* Dropdown styles */
         .dropdown {
             position: relative;
         }
@@ -380,7 +374,7 @@ nav {
         .stat-value {
             font-size: 2rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .stat-label {
@@ -483,14 +477,14 @@ nav {
         .service-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, rgba(11, 108, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(142, 68, 173, 0.1) 0%, rgba(230, 126, 34, 0.1) 100%);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--primary);
+            color: var(--secondary);
         }
 
         .service-card h3 {
@@ -683,10 +677,6 @@ nav {
 }
 
 .region-details {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
     z-index: 10;
 }
 
@@ -927,17 +917,17 @@ nav {
 
 /* Region highlighting */
 .region-east .country.east-africa {
-    fill: rgba(11, 108, 246, 0.4);
+    fill: rgba(11, 108, 246, 0.6);
     stroke-width: 2;
 }
 
 .region-west .country.west-africa {
-    fill: rgba(16, 185, 129, 0.4);
+    fill: rgba(16, 185, 129, 0.6);
     stroke-width: 2;
 }
 
 .region-south .country.southern-africa {
-    fill: rgba(245, 158, 11, 0.4);
+    fill: rgba(245, 158, 11, 0.6);
     stroke-width: 2;
 }
 
@@ -1106,12 +1096,24 @@ nav {
 
         /* Responsive */
         @media (max-width: 968px) {
-            .hero, .map-container {
+            .hero, .map-container, .about-us > div, .team-grid, .testimonials-grid {
                 grid-template-columns: 1fr;
             }
             
             .hero h2 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .hero, .services, .clients, .track-record, .leadership, .testimonials, .contact-section, .about-us {
+                padding: 4rem 2rem;
             }
             
             .services-grid {
@@ -1164,6 +1166,14 @@ nav {
             nav .dropdown > a .fas {
                 margin-left: auto;
             }
+
+            .map-grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 1rem 2rem;
+            }
         }
     </style>
 </head>
@@ -1212,15 +1222,16 @@ nav {
             </div>
             
             <nav id="mainNav">
-                                <div class="dropdown">
+                                <a href="#about-us">About Us</a>
+                <div class="dropdown">
                     <a href="#services">Services <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#strategic-intelligence">Strategic Regulatory Intelligence</a></li>
-                        <li><a href="#regulatory-affairs">Regulatory Affairs</a></li>
-                        <li><a href="#clinical-research">Clinical Research</a></li>
-                        <li><a href="#cgmp-compliance">cGMP Compliance</a></li>
-                        <li><a href="#medical-writing">Regulatory Medical Writing</a></li>
-                        <li><a href="#labeling-artwork">Labeling & Artwork</a></li>
+                        <li><a href="strategic-regulatory-intelligence.html">Strategic Regulatory Intelligence</a></li>
+                        <li><a href="regulatory-affairs.html">Regulatory Affairs</a></li>
+                        <li><a href="clinical-research.html">Clinical Research</a></li>
+                        <li><a href="cgmp-compliance.html">cGMP Compliance</a></li>
+                        <li><a href="medical-writing.html">Regulatory Medical Writing</a></li>
+                        <li><a href="labeling-artwork.html">Labeling & Artwork</a></li>
                     </ul>
                 </div>
                 <a href="#clients">Clients</a>
@@ -1259,9 +1270,61 @@ nav {
                     </div>
                 </div>
             </div>
-            
             <div class="hero-svg">
                 <img src="medland.svg" alt="Medical Landing Page Illustration">
+            </div>
+        </section>
+
+        <section class="about-us" id="about-us" style="padding: 6rem 4rem; background: white;">
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Your Partner in African Pharmaceutical Excellence</p>
+            </div>
+            <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">Who We Are</h3>
+                    <p style="color: var(--text-muted);">Headquartered in Nairobi, Kenya, Elymedicare Pharmacy (ECP) is a private limited company incorporated under the Companies Act 2015. We are a consortium of professionals with over 15 years of experience in assisting global pharmaceutical companies in achieving regulatory compliance, clinical research, and cGMP standards. We provide our clients with a comprehensive portfolio of services optimized to meet the standards of African Medicines Regulatory Authorities (AMRAs).</p>
+                    <h3 style="font-size: 1.8rem; color: var(--primary); margin-top: 2rem; margin-bottom: 1rem;">Our Mission</h3>
+                    <p style="color: var(--text-muted);">Our mission is to streamline the expensive and time-consuming process of bringing effective and reliable medicines to market and ensuring their continued availability for the benefit of patients.</p>
+                </div>
+                <div>
+                    <img src="med2.svg" alt="About Us Illustration" style="max-width: 100%; height: auto; border-radius: 20px;">
+                </div>
+            </div>
+            <div style="margin-top: 4rem;">
+                <h3 style="font-size: 1.8rem; color: var(--primary); text-align: center; margin-bottom: 2rem;">Why Choose Us</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-star"></i></div>
+                        <h3>Extensive Experience</h3>
+                        <p>With over 15 years of expertise, we have a proven track record of helping global pharmaceutical companies achieve regulatory compliance and clinical research excellence.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>Proven Success</h3>
+                        <p>ECP has completed numerous projects with leading pharmaceutical companies, delivering successful outcomes in regulatory intelligence, clinical trials, and more.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+                        <h3>Specialised Knowledge</h3>
+                        <p>Our multidisciplinary team specializes in end-to-end regulatory solutions with in-depth knowledge of African Medicines Regulatory Authorities (AMRAs).</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Commitment to Innovation</h3>
+                        <p>We are dedicated to shortening the time-to-market for effective medicines through innovative and efficient processes.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-users"></i></div>
+                        <h3>Client-Centric Approach</h3>
+                        <p>We prioritize our clients' needs, tailoring our services to meet their specific requirements and fostering long-term partnerships.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-globe-africa"></i></div>
+                        <h3>Regional Expertise</h3>
+                        <p>Headquartered in Nairobi, we have a deep understanding of the regulatory landscape in Africa, providing targeted solutions for the region.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1272,41 +1335,53 @@ nav {
             </div>
             
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Strategic Regulatory Intelligence</h3>
-                    <p>Stay ahead of evolving regulatory environments in African markets with our strategic intelligence services.</p>
-                </div>
+                <a href="strategic-regulatory-intelligence.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Strategic Regulatory Intelligence</h3>
+                        <p>Stay ahead of evolving regulatory environments in African markets with our strategic intelligence services.</p>
+                    </div>
+                </a>
                 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-file-medical"></i></div>
-                    <h3>Regulatory Affairs</h3>
-                    <p>Comprehensive regulatory affairs management from new product authorizations to lifecycle management.</p>
-                </div>
+                <a href="regulatory-affairs.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-file-medical"></i></div>
+                        <h3>Regulatory Affairs</h3>
+                        <p>Comprehensive regulatory affairs management from new product authorizations to lifecycle management.</p>
+                    </div>
+                </a>
                 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h3>Clinical Research</h3>
-                    <p>Clinical trial support, site selection, regulatory approvals, and pharmacovigilance services.</p>
-                </div>
+                <a href="clinical-research.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <h3>Clinical Research</h3>
+                        <p>Clinical trial support, site selection, regulatory approvals, and pharmacovigilance services.</p>
+                    </div>
+                </a>
                 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-industry"></i></div>
-                    <h3>cGMP Compliance</h3>
-                    <p>GMP audits, quality system implementation, and preparation for regulatory inspections.</p>
-                </div>
+                <a href="cgmp-compliance.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-industry"></i></div>
+                        <h3>cGMP Compliance</h3>
+                        <p>GMP audits, quality system implementation, and preparation for regulatory inspections.</p>
+                    </div>
+                </a>
 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
-                    <h3>Regulatory Medical Writing</h3>
-                    <p>Expert delivery of clear, concise, and compliant regulatory and medical writing services.</p>
-                </div>
+                <a href="medical-writing.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
+                        <h3>Regulatory Medical Writing</h3>
+                        <p>Expert delivery of clear, concise, and compliant regulatory and medical writing services.</p>
+                    </div>
+                </a>
 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-tags"></i></div>
-                    <h3>Labeling & Artwork</h3>
-                    <p>End-to-end labeling services and comprehensive solutions for artwork management.</p>
-                </div>
+                <a href="labeling-artwork.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-tags"></i></div>
+                        <h3>Labeling & Artwork</h3>
+                        <p>End-to-end labeling services and comprehensive solutions for artwork management.</p>
+                    </div>
+                </a>
             </div>
         </section>
 
@@ -1424,30 +1499,32 @@ nav {
     
             <div class="regional-map">
                 <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-dark);">Our Regional Coverage</h3>
-                <div class="africa-map">
-                    <div id="africa-map-container">
-                        <!-- Africa SVG map with enhanced interactivity -->
-                        <object id="africa-svg" type="image/svg+xml" data="Blank_Map-Africa.svg" width="100%" height="400"></object>
+                <div class="map-grid-container" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: flex-start;">
+                    <div class="africa-map">
+                        <div id="africa-map-container">
+                            <!-- Africa SVG map with enhanced interactivity -->
+                            <object id="africa-svg" type="image/svg+xml" data="Blank_Map-Africa.svg" width="100%" height="400"></object>
+                        </div>
+                        
+                        <!-- Region markers with improved positioning -->
+                        <div class="region-marker marker-east" data-region="east">
+                            <div class="marker-dot"></div>
+                            <div class="marker-tooltip">East Africa</div>
+                        </div>
+                        <div class="region-marker marker-west" data-region="west">
+                            <div class="marker-dot"></div>
+                            <div class="marker-tooltip">West Africa</div>
+                        </div>
+                        <div class="region-marker marker-south" data-region="south">
+                            <div class="marker-dot"></div>
+                            <div class="marker-tooltip">Southern Africa</div>
+                        </div>
+                        <div class="region-marker marker-global" data-region="global">
+                            <div class="marker-dot"></div>
+                            <div class="marker-tooltip">Global Operations</div>
+                        </div>
                     </div>
-                    
-                    <!-- Region markers with improved positioning -->
-                    <div class="region-marker marker-east" data-region="east">
-                        <div class="marker-dot"></div>
-                        <div class="marker-tooltip">East Africa</div>
-                    </div>
-                    <div class="region-marker marker-west" data-region="west">
-                        <div class="marker-dot"></div>
-                        <div class="marker-tooltip">West Africa</div>
-                    </div>
-                    <div class="region-marker marker-south" data-region="south">
-                        <div class="marker-dot"></div>
-                        <div class="marker-tooltip">Southern Africa</div>
-                    </div>
-                    <div class="region-marker marker-global" data-region="global">
-                        <div class="marker-dot"></div>
-                        <div class="marker-tooltip">Global Operations</div>
-                    </div>
-    
+        
                     <div class="region-details">
                         <div class="region-card" data-region="east">
                             <h4><i class="fas fa-map-marker-alt"></i> Eastern Africa (EAC & IGAD)</h4>
@@ -1491,7 +1568,7 @@ nav {
                         
                         <div class="region-card" data-region="global">
                             <h4><i class="fas fa-globe"></i> Global Operations</h4>
-                            <p><strong>Nancy Akoth Obonyo</strong> - ECP Director & Independent Consultant</p>
+                            <p><strong>Nancy Akoth</strong> - ECP Director & Independent Consultant</p>
                             <p>Based in Virginia, United States | 8+ years experience</p>
                             <div class="country-list">
                                 <span class="country-tag">International</span>
@@ -1518,45 +1595,51 @@ nav {
         </div>
     </div>
     
-    <div class="team-grid">
-        <!-- Team cards remain the same -->
-        <div class="team-card">
-            <div class="team-photo"><i class="fas fa-user-md"></i></div>
-            <div class="team-info">
-                <h4>Dr. Elly Onyango Obonyo</h4>
-                <div style="color: var(--primary); font-weight: 600;">ECP Director, Technical Director Regulatory Affairs (EAC&IGAD)</div>
-                <p style="margin-top: 0.5rem; color: var(--text-muted);">15 years in pharmaceutical regulatory affairs</p>
-            </div>
-        </div>
-        
-        <div class="team-card">
-            <div class="team-photo"><i class="fas fa-user-md"></i></div>
-            <div class="team-info">
-                <h4>Nancy Akoth Obonyo</h4>
-                <div style="color: var(--primary); font-weight: 600;">ECP Director & Independent Consultant</div>
-                <p style="margin-top: 0.5rem; color: var(--text-muted);">Over 8 years in data analysis and compliance</p>
-            </div>
-        </div>
-        
-        <div class="team-card">
-            <div class="team-photo"><i class="fas fa-user-md"></i></div>
-            <div class="team-info">
-                <h4>Wazani Zulu</h4>
-                <div style="color: var(--primary); font-weight: 600;">Chief Regulatory Officer (SADC)</div>
-                <p style="margin-top: 0.5rem; color: var(--text-muted);">17 years in pharmaceutical regulatory affairs</p>
-            </div>
-        </div>
-
-        <div class="team-card">
-            <div class="team-photo"><i class="fas fa-user-md"></i></div>
-            <div class="team-info">
-                <h4>Emmanuel Ekow Amo-Acquah</h4>
-                <div style="color: var(--primary); font-weight: 600;">Chief Regulatory Officer (ECOWAS)</div>
-                <p style="margin-top: 0.5rem; color: var(--text-muted);">32 years in pharmacovigilance</p>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="team-grid">
+            <a href="contact.html" style="text-decoration: none; color: inherit;">
+                <div class="team-card">
+                    <div class="team-photo"><i class="fas fa-user-md"></i></div>
+                    <div class="team-info">
+                        <h4>Dr. Elly Onyango Obonyo</h4>
+                        <div style="color: var(--primary); font-weight: 600;">ECP Director, Technical Director Regulatory Affairs (EAC&IGAD)</div>
+                        <p style="margin-top: 0.5rem; color: var(--text-muted);">15 years in pharmaceutical regulatory affairs</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="contact.html" style="text-decoration: none; color: inherit;">
+                <div class="team-card">
+                    <div class="team-photo"><i class="fas fa-user-md"></i></div>
+                    <div class="team-info">
+                        <h4>Nancy Akoth</h4>
+                        <div style="color: var(--primary); font-weight: 600;">ECP Director & Independent Consultant</div>
+                        <p style="margin-top: 0.5rem; color: var(--text-muted);">Over 8 years in data analysis and compliance</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="contact.html" style="text-decoration: none; color: inherit;">
+                <div class="team-card">
+                    <div class="team-photo"><i class="fas fa-user-md"></i></div>
+                    <div class="team-info">
+                        <h4>Wazani Zulu</h4>
+                        <div style="color: var(--primary); font-weight: 600;">Chief Regulatory Officer (SADC)</div>
+                        <p style="margin-top: 0.5rem; color: var(--text-muted);">17 years in pharmaceutical regulatory affairs</p>
+                    </div>
+                </div>
+            </a>
+    
+            <a href="contact.html" style="text-decoration: none; color: inherit;">
+                <div class="team-card">
+                    <div class="team-photo"><i class="fas fa-user-md"></i></div>
+                    <div class="team-info">
+                        <h4>Emmanuel Ekow Amo-Acquah</h4>
+                        <div style="color: var(--primary); font-weight: 600;">Chief Regulatory Officer (ECOWAS)</div>
+                        <p style="margin-top: 0.5rem; color: var(--text-muted);">32 years in pharmacovigilance</p>
+                    </div>
+                </div>
+            </a>
+        </div></section>
 
         <section class="testimonials">
             <div class="section-header">
@@ -1605,7 +1688,7 @@ nav {
                     <strong>Phone:</strong>
                     <div>+254 723 329 107<br>+15743440684</div>
                 </div>
-                <a href="mailto:companypharmacist.elymedicare@gmail.com" class="email-btn">
+                <a href="contact.html" class="email-btn">
                     <i class="fas fa-envelope"></i>
                     Send Message
                 </a>
@@ -1941,6 +2024,37 @@ nav {
                 }
             });
         });
+
+        // Counter animation
+        const stats = document.querySelectorAll('.stat-value');
+        const statsSection = document.querySelector('.hero-stats');
+
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + '+';
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    stats.forEach(stat => {
+                        const endValue = parseInt(stat.textContent.replace('+', ''));
+                        animateValue(stat, 0, endValue, 2000);
+                    });
+                    observer.unobserve(statsSection);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
     </script>
     </body>
     </html>
