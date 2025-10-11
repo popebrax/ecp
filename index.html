@@ -36,6 +36,7 @@
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
+            color: #000080;
         }
 
         .bg-animation {
@@ -327,6 +328,21 @@ nav a {
     gap: 4rem; /* Increased from 3rem */
     align-items: center;
     min-height: 100vh;
+    position: relative; /* Add this */
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-content, .hero-svg {
+    z-index: 2;
+    position: relative;
 }
 
         .hero-content {
@@ -353,9 +369,11 @@ nav a {
 
         .hero h2 {
             font-size: 3rem;
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .hero-desc {
@@ -440,6 +458,7 @@ nav a {
     max-width: 1400px;
     margin: 6rem auto; /* Increased from 4rem */
     padding: 0 4rem;
+    position: relative; /* Add this */
 }
 
 
@@ -467,11 +486,13 @@ nav a {
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.4s ease;
+            border: 1px solid transparent; /* Add this */
         }
 
         .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            border-color: rgba(44, 62, 80, 0.1); /* Add this */
         }
 
         .service-icon {
@@ -581,6 +602,7 @@ nav a {
     max-width: 1400px;
     margin: 8rem auto; /* Increased from 6rem */
     padding: 0 4rem;
+    position: relative; /* Add this */
 }
 
         .projects-grid {
@@ -595,16 +617,37 @@ nav a {
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative; /* Add this */
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: all 0.6s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card:hover::before {
+            left: 100%;
         }
 
         .project-header {
             padding: 1.5rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .project-header h4 {
             color: white;
         }
 
@@ -1250,6 +1293,7 @@ nav a {
 
     <main>
         <section class="hero">
+            <canvas id="particleCanvas"></canvas>
             <div class="hero-content">
                 <span class="eyebrow">Regulatory Excellence Across Africa</span>
                 <h2>Navigating Africa's Regulatory Landscape with Confidence</h2>
@@ -2055,6 +2099,111 @@ nav a {
         }, { threshold: 0.5 });
 
         observer.observe(statsSection);
+
+        const particleCanvas = document.getElementById('particleCanvas');
+        const particleCtx = particleCanvas.getContext('2d');
+        let gridParticles;
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        }
+
+        const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+
+        function setParticleCanvasSize() {
+            particleCanvas.width = particleCanvas.offsetWidth;
+            particleCanvas.height = particleCanvas.offsetHeight;
+        }
+
+        particleCanvas.addEventListener('mousemove', (event) => {
+            let rect = particleCanvas.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
+        });
+
+        particleCanvas.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class GridParticle {
+            constructor(x, y, size, color) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = color;
+                this.baseAlpha = 0;
+                this.targetAlpha = 0;
+            }
+            draw() {
+                particleCtx.beginPath();
+                particleCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                particleCtx.fillStyle = this.color.replace(')', `, ${this.baseAlpha})`).replace('rgb', 'rgba');
+                particleCtx.fill();
+            }
+            update() {
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    this.targetAlpha = Math.max(0, 1 - (distance / mouse.radius));
+                } else {
+                    this.targetAlpha = 0;
+                }
+
+                this.baseAlpha += (this.targetAlpha - this.baseAlpha) * 0.1; // Easing
+
+                if (this.baseAlpha > 0.01) {
+                    this.draw();
+                }
+            }
+        }
+
+        function initGrid() {
+            gridParticles = [];
+            let gap = 30;
+            for (let y = 0; y < particleCanvas.height; y += gap) {
+                for (let x = 0; x < particleCanvas.width; x += gap) {
+                    gridParticles.push(new GridParticle(x, y, 2, `rgb(${hexToRgb(primaryColor)})`));
+                }
+            }
+        }
+
+        function hexToRgb(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : null;
+        }
+
+
+        let animationFrameId;
+        function animateGrid() {
+            animationFrameId = requestAnimationFrame(animateGrid);
+            particleCtx.clearRect(0,0,particleCanvas.width, particleCanvas.height);
+            for (let i = 0; i < gridParticles.length; i++) {
+                gridParticles[i].update();
+            }
+        }
+
+        const heroSection = document.querySelector('.hero');
+        const gridObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setParticleCanvasSize();
+                    initGrid();
+                    animateGrid();
+                } else {
+                    cancelAnimationFrame(animationFrameId);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        gridObserver.observe(heroSection);
+
+        window.addEventListener('resize', () => {
+            setParticleCanvasSize();
+            initGrid();
+        });
     </script>
     </body>
     </html>
