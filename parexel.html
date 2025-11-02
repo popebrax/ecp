@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAREXEL Multi-Client Projects | Elymedicare Pharmacy</title>
+    <title>PAREXEL Multi-Client Projects | ECP</title>
     <meta name="description" content="PAREXEL Multi-Client Projects: Regulatory consulting for Novartis, Merck, P&G, Angelini, MSD, and LEO Pharma in Africa.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -49,14 +49,14 @@
         }
 
        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+           max-width: 1400px;
+           margin: 0 auto;
+           padding: 1rem 4rem;
+           height: 120px; /* Fixed height for the header */
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
         .brand {
             display: flex;
             align-items: center;
@@ -75,6 +75,12 @@
             font-weight: 800;
             font-size: 28px;
             box-shadow: none;
+        }
+
+        .logo img {
+            max-height: 100px; /* Set max height for the logo */
+            width: auto; /* Maintain aspect ratio */
+            object-fit: contain;
         }
 
         .brand-text h1 {
@@ -281,10 +287,10 @@
     <header>
         <div class="nav-container">
             <div class="brand">
-                <div class="logo">ECP</div>
+                <div class="logo"><img src="ecplogo.png" alt="ECP Logo"></div>
                 <div class="brand-text">
-                    <h1><a href="index.html" style="color: inherit; text-decoration: none;">Elymedicare Pharmacy</a></h1>
-                    <p>Regulatory & Clinical Research Services</p>
+                    <h1><a href="index.html" style="color: inherit; text-decoration: none;">ECP</a></h1>
+                    <p>Africa Regulatory Consulting Group</p>
                 </div>
             </div>
             <nav id="mainNav">
@@ -322,7 +328,7 @@
 
         <section class="service-detail-content">
             <h2>Project Overview</h2>
-            <p>Elymedicare Pharmacy supported PAREXEL's multi-client projects by delivering regulatory intelligence, label knowledge, and compliance strategies for leading pharmaceutical companies operating in Africa.</p>
+            <p>ECP supported PAREXEL's multi-client projects by delivering regulatory intelligence, label knowledge, and compliance strategies for leading pharmaceutical companies operating in Africa.</p>
             
             <h2>Key Achievements</h2>
             <ul>
@@ -339,7 +345,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>Elymedicare Pharmacy</h3>
+                <h3>ECP</h3>
                 <p>Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.</p>
             </div>
             <div class="footer-links">
@@ -359,7 +365,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Elymedicare Pharmacy (ECP). All rights reserved.</p>
+            <p>&copy; 2023 ECP. All rights reserved.</p>
         </div>
     </footer>
 </body>

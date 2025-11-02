@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECP – Africa Regulatory Consulting Group</title>
-    <meta name="description" content="ECP – Africa Regulatory Consulting Group: Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.">
+    <title>ECP - Africa Regulatory Consulting Group</title>
+    <meta name="description" content="ECP: Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -168,7 +168,8 @@
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1.5rem 4rem;
+    padding: 1rem 4rem;
+    height: 120px; /* Fixed height for the header */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -196,6 +197,12 @@
     margin-left: 0; /* Ensure no left margin */
 }
 
+.logo img {
+    max-height: 100px; /* Set max height for the logo */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain;
+}
+
 .brand-text h1 {
     font-size: 1.4rem; /* Slightly larger */
     font-weight: 800;
@@ -205,8 +212,7 @@
 }
 
 .brand-text p {
-    font-size: 0.8rem;
-    font-weight: 600;/* Slightly larger */
+    font-size: 0.8rem; /* Slightly larger */
     color: var(--text-muted);
     margin: 0;
     white-space: nowrap;
@@ -1064,11 +1070,17 @@ nav a {
         .team-photo {
             height: 200px;
             background: linear-gradient(135deg, rgba(11, 108, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            background-color: #f0f0f0; /* Fallback */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: var(--primary);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 16px;
         }
 
         .team-info {
@@ -1252,7 +1264,7 @@ nav a {
     <header>
         <div class="nav-container">
             <div class="brand">
-                <div class="logo">ECP</div>
+                <div class="logo"><img src="ecplogo.png" alt="ECP Logo"></div>
                 <div class="brand-text">
                     <h1>ECP</h1>
                     <p>Africa Regulatory Consulting Group</p>
@@ -1276,6 +1288,7 @@ nav a {
                         <li><a href="cgmp-compliance.html">cGMP Compliance</a></li>
                         <li><a href="medical-writing.html">Regulatory Medical Writing</a></li>
                         <li><a href="labeling-artwork.html">Labeling & Artwork</a></li>
+                        <li><a href="pharmacovigilance.html">Pharmacovigilance</a></li>
                     </ul>
                 </div>
                 <a href="#clients">Clients</a>
@@ -1298,7 +1311,7 @@ nav a {
             <div class="hero-content">
                 <span class="eyebrow">Regulatory Excellence Across Africa</span>
                 <h2>Navigating Africa's Regulatory Landscape with Confidence</h2>
-                <p class="hero-desc">Elymedicare Pharmacy (ECP) is your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets. Nairobi-based experts with 15+ years experience.</p>
+                <p class="hero-desc">ECP is your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets. Nairobi-based experts with 15+ years experience.</p>
                 
                 <div class="hero-stats">
                     <div class="stat">
@@ -1328,7 +1341,7 @@ nav a {
             <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                 <div>
                     <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">Who We Are</h3>
-                    <p style="color: var(--text-muted);">Headquartered in Nairobi, Kenya, Elymedicare Pharmacy (ECP) is a private limited company incorporated under the Companies Act 2015. We are a consortium of professionals with over 15 years of experience in assisting global pharmaceutical companies in achieving regulatory compliance, clinical research, and cGMP standards. We provide our clients with a comprehensive portfolio of services optimized to meet the standards of African Medicines Regulatory Authorities (AMRAs).</p>
+                    <p style="color: var(--text-muted);">Headquartered in Nairobi, Kenya, ECP is a private limited company incorporated under the Companies Act 2015. We are a consortium of professionals with over 15 years of experience in assisting global pharmaceutical companies in achieving regulatory compliance, clinical research, and cGMP standards. We provide our clients with a comprehensive portfolio of services optimized to meet the standards of African Medicines Regulatory Authorities (AMRAs).</p>
                     <h3 style="font-size: 1.8rem; color: var(--primary); margin-top: 2rem; margin-bottom: 1rem;">Our Mission</h3>
                     <p style="color: var(--text-muted);">Our mission is to streamline the expensive and time-consuming process of bringing effective and reliable medicines to market and ensuring their continued availability for the benefit of patients.</p>
                 </div>
@@ -1425,6 +1438,14 @@ nav a {
                         <div class="service-icon"><i class="fas fa-tags"></i></div>
                         <h3>Labeling & Artwork</h3>
                         <p>End-to-end labeling services and comprehensive solutions for artwork management.</p>
+                    </div>
+                </a>
+
+                <a href="pharmacovigilance.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Pharmacovigilance</h3>
+                        <p>Ensuring drug safety and efficacy through comprehensive pharmacovigilance services.</p>
                     </div>
                 </a>
             </div>
@@ -1587,8 +1608,7 @@ nav a {
                         
                         <div class="region-card" data-region="west">
                             <h4><i class="fas fa-map-marker-alt"></i> Western Africa (ECOWAS)</h4>
-                            <p><strong>Emmanuel Ekow Amo-Acquah</strong> - Chief Regulatory Officer</p>
-                            <p>Based in Accra, Ghana | 32 years experience</p>
+                            <p>Our dedicated team provides expert regulatory support in Western Africa.</p>
                             <div class="country-list">
                                 <span class="country-tag">Nigeria</span>
                                 <span class="country-tag">Ghana</span>
@@ -1600,8 +1620,7 @@ nav a {
                         
                         <div class="region-card" data-region="south">
                             <h4><i class="fas fa-map-marker-alt"></i> Southern Africa (SADC)</h4>
-                            <p><strong>Wazani Zulu</strong> - Chief Regulatory Officer</p>
-                            <p>Based in Lusaka, Zambia | 17 years experience</p>
+                            <p>Our dedicated team provides expert regulatory support in Southern Africa.</p>
                             <div class="country-list">
                                 <span class="country-tag">South Africa</span>
                                 <span class="country-tag">Zambia</span>
@@ -1643,7 +1662,7 @@ nav a {
         <div class="team-grid">
             <a href="contact.html" style="text-decoration: none; color: inherit;">
                 <div class="team-card">
-                    <div class="team-photo"><i class="fas fa-user-md"></i></div>
+                    <div class="team-photo"><img src="ellyobonyo.jpg" alt="Dr. Elly Onyango Obonyo" style="width: 100%; height: 100%;"></div>
                     <div class="team-info">
                         <h4>Dr. Elly Onyango Obonyo</h4>
                         <div style="color: var(--primary); font-weight: 600;">ECP Director, Technical Director Regulatory Affairs (EAC&IGAD)</div>
@@ -1654,7 +1673,7 @@ nav a {
             
             <a href="contact.html" style="text-decoration: none; color: inherit;">
                 <div class="team-card">
-                    <div class="team-photo"><i class="fas fa-user-md"></i></div>
+                    <div class="team-photo"><img src="nancyobonyo.jpg" alt="Nancy Akoth" style="width: 100%; height: 100%;"></div>
                     <div class="team-info">
                         <h4>Nancy Akoth</h4>
                         <div style="color: var(--primary); font-weight: 600;">ECP Director & Independent Consultant</div>
@@ -1667,9 +1686,9 @@ nav a {
                 <div class="team-card">
                     <div class="team-photo"><i class="fas fa-user-md"></i></div>
                     <div class="team-info">
-                        <h4>Wazani Zulu</h4>
-                        <div style="color: var(--primary); font-weight: 600;">Chief Regulatory Officer (SADC)</div>
-                        <p style="margin-top: 0.5rem; color: var(--text-muted);">17 years in pharmaceutical regulatory affairs</p>
+                        <h4>Our Team in Southern Africa</h4>
+                        <div style="color: var(--primary); font-weight: 600;">Dedicated Regulatory Experts (SADC)</div>
+                        <p style="margin-top: 0.5rem; color: var(--text-muted);">Years of experience in pharmaceutical regulatory affairs</p>
                     </div>
                 </div>
             </a>
@@ -1678,9 +1697,9 @@ nav a {
                 <div class="team-card">
                     <div class="team-photo"><i class="fas fa-user-md"></i></div>
                     <div class="team-info">
-                        <h4>Emmanuel Ekow Amo-Acquah</h4>
-                        <div style="color: var(--primary); font-weight: 600;">Chief Regulatory Officer (ECOWAS)</div>
-                        <p style="margin-top: 0.5rem; color: var(--text-muted);">32 years in pharmacovigilance</p>
+                        <h4>Our Team in Western Africa</h4>
+                        <div style="color: var(--primary); font-weight: 600;">Dedicated Regulatory Experts (ECOWAS)</div>
+                        <p style="margin-top: 0.5rem; color: var(--text-muted);">Extensive experience in pharmacovigilance</p>
                     </div>
                 </div>
             </a>
@@ -1745,7 +1764,7 @@ nav a {
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>Elymedicare Pharmacy</h3>
+                <h3>ECP</h3>
                 <p>Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.</p>
             </div>
             
@@ -1768,7 +1787,7 @@ nav a {
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 Elymedicare Pharmacy (ECP). All rights reserved.</p>
+            <p>&copy; 2023 ECP. All rights reserved.</p>
         </div>
     </footer>
 
