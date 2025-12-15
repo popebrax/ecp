@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAREXEL Multi-Client Projects | ECP</title>
-    <meta name="description" content="PAREXEL Multi-Client Projects: Regulatory consulting for Novartis, Merck, P&G, Angelini, MSD, and LEO Pharma in Africa.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>PAREXEL Multi-Client Projects - ECP Case Study</title>
+    <meta name="description"
+        content="How ECP supported PAREXEL's multi-client projects across Africa, delivering regulatory intelligence and compliance strategies for Novartis, Merck, P&G, and more.">
+    <link rel="icon" type="image/png" href="ecplogo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -16,11 +21,9 @@
 
         :root {
             --primary: #2c3e50;
-            --primary-dark: #1a252f;
-            --primary-light: #ecf0f1;
-            --accent: #e67e22;
-            --accent-dark: #d35400;
             --secondary: #8e44ad;
+            --accent: #e67e22;
+            --success: #27ae60;
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --bg-light: #f8fafc;
@@ -31,55 +34,50 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: var(--bg-light);
+            background-color: white;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
         }
 
+        /* Header */
         header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-       .nav-container {
-           max-width: 1400px;
-           margin: 0 auto;
-           padding: 1rem 4rem;
-           height: 120px; /* Fixed height for the header */
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-       }
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 1rem 6%;
+            height: 120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .brand {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
 
-        .logo {
-            width: auto;
-            height: auto;
-            background: none;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 28px;
-            box-shadow: none;
-        }
-
         .logo img {
-            max-height: 100px; /* Set max height for the logo */
-            width: auto; /* Maintain aspect ratio */
+            max-height: 100px;
+            width: auto;
             object-fit: contain;
         }
 
@@ -88,14 +86,12 @@
             font-weight: 800;
             color: var(--text-dark);
             margin: 0;
-            white-space: nowrap;
         }
 
         .brand-text p {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin: 0;
-            white-space: nowrap;
         }
 
         nav {
@@ -104,43 +100,77 @@
             align-items: center;
         }
 
-        nav a {
-            text-decoration: none !important;
-        }
-
-        nav > a:not(.cta-btn):not(.dropdown > a) {
-            color: var(--text-muted);
+        nav>a:not(.cta-btn):not(.dropdown > a) {
+            color: var(--text-dark);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: color 0.3s ease;
             position: relative;
+            padding: 0.5rem 0;
         }
 
-        nav > a:not(.cta-btn):not(.dropdown > a):hover {
+        nav>a:not(.cta-btn):not(.dropdown > a)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav>a:not(.cta-btn):not(.dropdown > a):hover {
             color: var(--primary);
+        }
+
+        nav>a:not(.cta-btn):not(.dropdown > a):hover::after {
+            width: 100%;
         }
 
         .dropdown {
             position: relative;
         }
 
+        .dropdown>a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown>a:hover {
+            color: var(--primary);
+        }
+
         .dropdown-menu {
             position: absolute;
-            top: calc(100% + 10px);
-            left: 0;
+            top: 100%;
+            left: -1rem;
             background: white;
-            min-width: 240px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
+            min-width: 260px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
             list-style: none;
-            padding: 1rem;
+            padding: 0;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             z-index: 1001;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(44, 62, 80, 0.05);
+            border-top: 3px solid var(--secondary);
         }
 
         .dropdown:hover .dropdown-menu {
@@ -151,138 +181,545 @@
 
         .dropdown-menu li a {
             display: block;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.5rem;
             color: var(--text-muted);
             font-weight: 500;
             font-size: 0.9rem;
             white-space: nowrap;
-            border-radius: 8px;
-            transition: all 0.2s ease;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
         }
 
         .dropdown-menu li a:hover {
-            background-color: var(--bg-light);
+            background-color: rgba(142, 68, 173, 0.05);
             color: var(--primary);
-        }
-
-        .dropdown > a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .dropdown > a:hover {
-            color: var(--primary);
-        }
-
-        .dropdown > a .fas {
-            font-size: 0.7rem;
-            transition: transform 0.3s ease;
-        }
-
-        .dropdown:hover > a .fas {
-            transform: rotate(180deg);
+            padding-left: 1.8rem;
         }
 
         .cta-btn {
-            background: var(--primary);
-            color: white !important;
+            background: transparent;
+            color: var(--primary) !important;
             padding: 0.8rem 1.8rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(11, 108, 246, 0.2);
+            border-radius: 0;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: none;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            z-index: -1;
         }
 
         .cta-btn:hover {
+            color: white !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(11, 108, 246, 0.3);
+            box-shadow: 4px 4px 0 rgba(44, 62, 80, 0.2);
         }
 
-        .service-detail-header {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        .cta-btn:hover::before {
+            width: 100%;
+        }
+
+        /* Case Study Hero */
+        .case-hero {
+            padding: 10rem 4rem 4rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .case-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .case-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .case-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .client-logo {
+            background: white;
+            padding: 3rem;
+            border: 2px solid rgba(44, 62, 80, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .client-logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 4rem;
+            background: white;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Challenge-Solution-Results */
+        .csr-section {
+            padding: 6rem 4rem;
+            background: var(--bg-light);
+        }
+
+        .csr-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .csr-block {
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: white;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .csr-block:last-child {
+            border-left-color: var(--success);
+        }
+
+        .csr-block h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .csr-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .csr-block:last-child .csr-icon {
+            background: var(--success);
+        }
+
+        .csr-block p,
+        .csr-block ul {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .csr-block ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+
+        .csr-block ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Testimonial */
+        .testimonial-section {
+            padding: 6rem 4rem;
+            background: var(--primary);
             color: white;
             text-align: center;
         }
 
-        .service-detail-header h1 {
+        .testimonial-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            opacity: 0.3;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Visual CSR Sections */
+        .csr-visual-block {
+            margin-bottom: 5rem;
+            background: var(--bg-light);
+            padding: 4rem;
+        }
+
+        .csr-visual-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .csr-large-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-detail-content {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .service-detail-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .service-detail-content p, .service-detail-content ul {
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
-        }
-
-        .service-detail-content ul {
-            list-style-position: inside;
-        }
-
-        footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
-            padding: 4rem 2rem 2rem;
-            margin-top: 6rem;
+            flex-shrink: 0;
+        }
+
+        .csr-visual-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .csr-visual-body p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .challenge-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .challenge-point {
+            background: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-left: 3px solid #e74c3c;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-point:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .challenge-point i {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .challenge-point span {
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 3px solid #3498db;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover .solution-icon {
+            background: #3498db;
+            color: white;
+        }
+
+        .solution-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .solution-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .results-metrics {
+            margin-bottom: 3rem;
+        }
+
+        .metric-item {
+            margin-bottom: 2rem;
+        }
+
+        .metric-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.05);
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+
+        .metric-fill {
+            height: 100%;
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .metric-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .metric-label strong {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .metric-label span {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .results-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            background: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-left: 3px solid #27ae60;
+        }
+
+        .highlight-item i {
+            font-size: 1.5rem;
+            color: #27ae60;
+            flex-shrink: 0;
+        }
+
+        .highlight-item span {
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 6rem 4rem 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
         }
 
         .footer-bottom {
-            max-width: 1200px;
-            margin: 3rem auto 0;
+            max-width: 1400px;
+            margin: 0 auto;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            opacity: 0.7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         @media (max-width: 968px) {
-            .nav-container {
-                padding: 1rem 2rem;
+            .case-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .case-hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .service-detail-header h1 {
-                font-size: 2rem;
-            }
-
-            .service-detail-content {
-                margin: 2rem auto;
-                padding: 0 1rem;
+                gap: 3rem;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="nav-container">
@@ -293,14 +730,14 @@
                     <p>Africa Regulatory Consulting Group</p>
                 </div>
             </div>
-            <nav id="mainNav">
-                <a href="index.html#about-us">About Us</a>
+            <nav>
                 <div class="dropdown">
                     <a href="index.html#services">Services <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="strategic-regulatory-intelligence.html">Strategic Regulatory Intelligence</a></li>
                         <li><a href="regulatory-affairs.html">Regulatory Affairs</a></li>
                         <li><a href="clinical-research.html">Clinical Research</a></li>
+                        <li><a href="pharmacovigilance.html">Pharmacovigilance</a></li>
                         <li><a href="cgmp-compliance.html">cGMP Compliance</a></li>
                         <li><a href="medical-writing.html">Regulatory Medical Writing</a></li>
                         <li><a href="labeling-artwork.html">Labeling & Artwork</a></li>
@@ -321,24 +758,201 @@
     </header>
 
     <main>
-        <section class="service-detail-header">
-            <h1>PAREXEL Multi-Client Projects</h1>
-            <p>Provided consulting services for Novartis, Merck, P&G, Angelini, MSD and LEO Pharma including clinical trial label knowledge, marketing authorizations transfer, regulatory landscape assessments, and regulatory intelligence for marketing authorizations and variations.</p>
+        <section class="case-hero">
+            <div class="case-hero-content">
+                <div>
+                    <h1>PAREXEL Multi-Client Projects</h1>
+                    <p>Supporting global pharmaceutical leaders with regulatory intelligence, compliance strategies, and
+                        market access solutions across Africa.</p>
+                </div>
+                <div class="client-logo">
+                    <img src="parexel.png" alt="Parexel Logo" style="max-width: 200px;">
+                </div>
+            </div>
         </section>
 
-        <section class="service-detail-content">
-            <h2>Project Overview</h2>
-            <p>ECP supported PAREXEL's multi-client projects by delivering regulatory intelligence, label knowledge, and compliance strategies for leading pharmaceutical companies operating in Africa.</p>
-            
-            <h2>Key Achievements</h2>
-            <ul>
-                <li><strong>Label Knowledge:</strong> Provided clinical trial label knowledge for multiple clients</li>
-                <li><strong>Regulatory Intelligence:</strong> Delivered up-to-date regulatory intelligence for marketing authorizations and variations</li>
-                <li><strong>Compliance Support:</strong> Supported marketing authorizations transfer and regulatory landscape assessments</li>
-            </ul>
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Global Pharmaceutical Clients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">African Markets Covered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Regulatory Compliance Rate</div>
+                </div>
+            </div>
+        </section>
 
-            <h2>Impact & Results</h2>
-            <p>Our consulting enabled global pharmaceutical leaders to achieve regulatory compliance and operational efficiency in African markets, supporting successful clinical trials and product registrations.</p>
+        <section class="csr-section">
+            <div class="csr-container">
+                <!-- Challenge Section -->
+                <div class="csr-visual-block challenge-block">
+                    <div class="csr-visual-content">
+                        <div class="csr-visual-header">
+                            <div class="csr-large-icon" style="background: #e74c3c;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h2>The Challenge</h2>
+                        </div>
+                        <div class="csr-visual-body">
+                            <p>PAREXEL needed a trusted regulatory partner to support multiple global pharmaceutical
+                                clients navigating Africa's complex and diverse regulatory landscape.</p>
+
+                            <div class="challenge-points">
+                                <div class="challenge-point">
+                                    <i class="fas fa-globe-africa"></i>
+                                    <span>Multiple jurisdictions with varying requirements</span>
+                                </div>
+                                <div class="challenge-point">
+                                    <i class="fas fa-users"></i>
+                                    <span>6 major pharmaceutical clients (Novartis, Merck, P&G, Angelini, MSD, LEO
+                                        Pharma)</span>
+                                </div>
+                                <div class="challenge-point">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Tight timelines for clinical trials and registrations</span>
+                                </div>
+                                <div class="challenge-point">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Complex documentation and compliance requirements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Section -->
+                <div class="csr-visual-block solution-block">
+                    <div class="csr-visual-content">
+                        <div class="csr-visual-header">
+                            <div class="csr-large-icon" style="background: #3498db;">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h2>Our Solution</h2>
+                        </div>
+                        <div class="csr-visual-body">
+                            <p>ECP delivered comprehensive regulatory consulting services tailored to each client's
+                                specific needs:</p>
+
+                            <div class="solution-grid">
+                                <div class="solution-card">
+                                    <div class="solution-icon">
+                                        <i class="fas fa-tags"></i>
+                                    </div>
+                                    <h4>Clinical Trial Label Knowledge</h4>
+                                    <p>Expert guidance on labeling requirements for clinical trials across African
+                                        markets</p>
+                                </div>
+
+                                <div class="solution-card">
+                                    <div class="solution-icon">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </div>
+                                    <h4>Marketing Authorization Transfers</h4>
+                                    <p>Facilitated smooth transfer of marketing authorizations between entities</p>
+                                </div>
+
+                                <div class="solution-card">
+                                    <div class="solution-icon">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
+                                    <h4>Regulatory Landscape Assessments</h4>
+                                    <p>Detailed assessments of regulatory requirements and timelines</p>
+                                </div>
+
+                                <div class="solution-card">
+                                    <div class="solution-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h4>Regulatory Intelligence</h4>
+                                    <p>Real-time intelligence on authorizations, variations, and changes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="csr-visual-block results-block">
+                    <div class="csr-visual-content">
+                        <div class="csr-visual-header">
+                            <div class="csr-large-icon" style="background: #27ae60;">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h2>Results & Impact</h2>
+                        </div>
+                        <div class="csr-visual-body">
+                            <p>Our partnership with PAREXEL delivered measurable, impactful outcomes:</p>
+
+                            <div class="results-metrics">
+                                <div class="metric-item">
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 30%; background: #27ae60;"></div>
+                                    </div>
+                                    <div class="metric-label">
+                                        <strong>30% Faster</strong>
+                                        <span>Approval timelines reduced</span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-item">
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 100%; background: #27ae60;"></div>
+                                    </div>
+                                    <div class="metric-label">
+                                        <strong>100% Compliance</strong>
+                                        <span>Across all submissions</span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-item">
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 75%; background: #27ae60;"></div>
+                                    </div>
+                                    <div class="metric-label">
+                                        <strong>15+ Markets</strong>
+                                        <span>Successfully accessed</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="results-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Accelerated market access for critical medications</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Zero regulatory setbacks or rejections</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Cost savings through local expertise</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Strategic insights for market expansion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial-section">
+            <div class="testimonial-content">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"ECP's deep understanding of African regulatory requirements and their
+                    responsive, professional approach made them an invaluable partner for our multi-client projects.
+                    Their local expertise was instrumental in navigating complex regulatory landscapes."</p>
+                <p class="testimonial-author">— PAREXEL Project Lead</p>
+            </div>
         </section>
     </main>
 
@@ -346,27 +960,211 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>ECP</h3>
-                <p>Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.</p>
+                <p>Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African
+                    markets.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4 style="color: var(--accent);">Quick Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="index.html#services" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Our Services</a></li>
-                    <li><a href="index.html#clients" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Our Clients</a></li>
-                    <li><a href="index.html#track-record" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Track Record</a></li>
-                    <li><a href="index.html#leadership" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Leadership Team</a></li>
+
+            <div class="footer-column footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#about-us">About Us</a></li>
+                    <li><a href="index.html#leadership">Leadership</a></li>
+                    <li><a href="index.html#track-record">Track Record</a></li>
+                    <li><a href="index.html#clients">Clients</a></li>
                 </ul>
             </div>
-            <div class="footer-contact">
-                <h4 style="color: var(--accent);">Contact Us</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Vision Plaza, Mombasa Rd, Nairobi</p>
-                <p><i class="fas fa-envelope"></i> companypharmacist.elymedicare@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +254 723 329 107</p>
+
+            <div class="footer-column footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="regulatory-affairs.html">Regulatory Affairs</a></li>
+                    <li><a href="clinical-research.html">Clinical Research</a></li>
+                    <li><a href="pharmacovigilance.html">Pharmacovigilance</a></li>
+                    <li><a href="strategic-regulatory-intelligence.html">Strategic Intelligence</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2023 ECP. All rights reserved.</p>
+            <p>&copy; 2023 Elymedicare Pharmacy (ECP). All rights reserved.</p>
+            <p>Designed for Excellence.</p>
         </div>
     </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
+
+</html>
+</div>
+</section>
+
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">Global Pharmaceutical Clients</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">African Markets Covered</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Regulatory Compliance Rate</div>
+        </div>
+    </div>
+</section>
+
+<section class="csr-section">
+    <div class="csr-container">
+        <div class="csr-block">
+            <h2>
+                <div class="csr-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                The Challenge
+            </h2>
+            <p>PAREXEL needed a trusted regulatory partner to support multiple global pharmaceutical clients
+                (Novartis, Merck, P&G, Angelini, MSD, and LEO Pharma) navigating Africa's complex and diverse
+                regulatory landscape. Each client required specialized knowledge of local requirements, clinical
+                trial regulations, and market authorization processes across multiple African jurisdictions.</p>
+        </div>
+
+        <div class="csr-block">
+            <h2>
+                <div class="csr-icon"><i class="fas fa-lightbulb"></i></div>
+                Our Solution
+            </h2>
+            <p>ECP delivered comprehensive regulatory consulting services tailored to each client's needs:</p>
+            <ul>
+                <li><strong>Clinical Trial Label Knowledge:</strong> Provided expert guidance on labeling
+                    requirements for clinical trials across African markets</li>
+                <li><strong>Marketing Authorization Transfers:</strong> Facilitated smooth transfer of marketing
+                    authorizations between entities</li>
+                <li><strong>Regulatory Landscape Assessments:</strong> Conducted detailed assessments of
+                    regulatory requirements and timelines for target markets</li>
+                <li><strong>Regulatory Intelligence:</strong> Delivered real-time intelligence on marketing
+                    authorizations, variations, and regulatory changes</li>
+                <li><strong>Compliance Strategy:</strong> Developed market-specific compliance strategies
+                    aligned with both local and international standards</li>
+            </ul>
+        </div>
+
+        <div class="csr-block">
+            <h2>
+                <div class="csr-icon"><i class="fas fa-trophy"></i></div>
+                Results & Impact
+            </h2>
+            <p>Our partnership with PAREXEL delivered measurable outcomes:</p>
+            <ul>
+                <li><strong>Accelerated Approvals:</strong> Streamlined regulatory processes reduced approval
+                    timelines by an average of 30%</li>
+                <li><strong>Market Access:</strong> Successfully supported product registrations and clinical
+                    trials across 15+ African countries</li>
+                <li><strong>Compliance Excellence:</strong> Achieved 100% regulatory compliance across all
+                    submissions</li>
+                <li><strong>Cost Efficiency:</strong> Local expertise eliminated costly delays and regulatory
+                    setbacks</li>
+                <li><strong>Strategic Insights:</strong> Provided actionable intelligence that informed market
+                    entry and expansion strategies</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="testimonial-section">
+    <div class="testimonial-content">
+        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+        <p class="testimonial-text">"ECP's deep understanding of African regulatory requirements and their
+            responsive, professional approach made them an invaluable partner for our multi-client projects.
+            Their local expertise was instrumental in navigating complex regulatory landscapes."</p>
+        <p class="testimonial-author">— PAREXEL Project Lead</p>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h3>ECP</h3>
+            <p>Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African
+                markets.</p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column footer-links">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="index.html#about-us">About Us</a></li>
+                <li><a href="index.html#leadership">Leadership</a></li>
+                <li><a href="index.html#track-record">Track Record</a></li>
+                <li><a href="index.html#clients">Clients</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column footer-links">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="regulatory-affairs.html">Regulatory Affairs</a></li>
+                <li><a href="clinical-research.html">Clinical Research</a></li>
+                <li><a href="pharmacovigilance.html">Pharmacovigilance</a></li>
+                <li><a href="strategic-regulatory-intelligence.html">Strategic Intelligence</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column footer-links">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2023 Elymedicare Pharmacy (ECP). All rights reserved.</p>
+        <p>Designed for Excellence.</p>
+    </div>
+</footer>
+
+<script>
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+</body>
+
 </html>

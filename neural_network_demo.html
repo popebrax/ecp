@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Neural Network - Realistic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .instruction {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-content">
+            <h1>Organic Neural Network</h1>
+            <p>Move your mouse to reveal the nervous system</p>
+            <p style="margin-top: 1rem; font-size: 1rem;">Watch random electrical impulses fire through the network!</p>
+        </div>
+        <div class="instruction">
+            👆 Hover to activate • Pulses fire randomly in all directions
+        </div>
+    </div>
+
+    <script>
+        const particleCanvas = document.getElementById('particleCanvas');
+        const particleCtx = particleCanvas.getContext('2d');
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 180
+        };
+
+        function setParticleCanvasSize() {
+            particleCanvas.width = window.innerWidth;
+            particleCanvas.height = window.innerHeight;
+        }
+
+        setParticleCanvasSize();
+
+        particleCanvas.addEventListener('mousemove', (event) => {
+            let rect = particleCanvas.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
+        });
+
+        particleCanvas.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        // Organic Neural Network System
+        class Neuron {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.radius = 4 + Math.random() * 4; // Variable sizes
+                this.alpha = 0;
+                this.targetAlpha = 0;
+                this.connections = [];
+                this.pulseTimer = Math.random() * 100; // Random firing offset
+            }
+
+            draw() {
+                if (this.alpha < 0.01) return;
+
+                const accentRgb = '142, 68, 173';
+
+                // Outer glow (larger for some neurons)
+                particleCtx.beginPath();
+                particleCtx.arc(this.x, this.y, this.radius * 3, 0, Math.PI * 2);
+                const gradient = particleCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3);
+                gradient.addColorStop(0, `rgba(${accentRgb}, ${this.alpha * 0.5})`);
+                gradient.addColorStop(1, `rgba(${accentRgb}, 0)`);
+                particleCtx.fillStyle = gradient;
+                particleCtx.fill();
+
+                // Neuron body (irregular shape)
+                particleCtx.beginPath();
+                particleCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                particleCtx.fillStyle = `rgba(${accentRgb}, ${this.alpha * 0.8})`;
+                particleCtx.fill();
+                particleCtx.strokeStyle = `rgba(255, 255, 255, ${this.alpha * 0.6})`;
+                particleCtx.lineWidth = 1.5;
+                particleCtx.stroke();
+            }
+
+            update() {
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    this.targetAlpha = Math.max(0, 1 - (distance / mouse.radius));
+                } else {
+                    this.targetAlpha = 0;
+                }
+
+                this.alpha += (this.targetAlpha - this.alpha) * 0.08;
+                this.draw();
+            }
+        }
+
+        class NervePulse {
+            constructor(path) {
+                this.path = path; // Array of neurons to travel through
+                this.currentIndex = 0;
+                this.progress = 0;
+                this.speed = 0.03 + Math.random() * 0.04;
+                this.size = 3 + Math.random() * 2;
+                this.alpha = 0.8 + Math.random() * 0.2;
+                this.color = Math.random() > 0.5 ? '230, 126, 34' : '255, 193, 7'; // Orange or yellow
+            }
+
+            draw() {
+                if (this.currentIndex >= this.path.length - 1) return;
+
+                const start = this.path[this.currentIndex];
+                const end = this.path[this.currentIndex + 1];
+
+                const x = start.x + (end.x - start.x) * this.progress;
+                const y = start.y + (end.y - start.y) * this.progress;
+
+                // Pulse glow trail
+                for (let i = 0; i < 4; i++) {
+                    const trailProgress = Math.max(0, this.progress - (i * 0.1));
+                    const trailX = start.x + (end.x - start.x) * trailProgress;
+                    const trailY = start.y + (end.y - start.y) * trailProgress;
+                    const trailAlpha = this.alpha * (1 - i / 4);
+
+                    particleCtx.beginPath();
+                    particleCtx.arc(trailX, trailY, this.size * (1 - i / 4), 0, Math.PI * 2);
+                    particleCtx.fillStyle = `rgba(${this.color}, ${trailAlpha * 0.4})`;
+                    particleCtx.fill();
+                }
+
+                // Main pulse with glow
+                particleCtx.beginPath();
+                particleCtx.arc(x, y, this.size * 1.5, 0, Math.PI * 2);
+                const gradient = particleCtx.createRadialGradient(x, y, 0, x, y, this.size * 1.5);
+                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.alpha})`);
+                gradient.addColorStop(0.4, `rgba(${this.color}, ${this.alpha})`);
+                gradient.addColorStop(1, `rgba(${this.color}, 0)`);
+                particleCtx.fillStyle = gradient;
+                particleCtx.fill();
+            }
+
+            update() {
+                this.progress += this.speed;
+
+                // Move to next segment
+                if (this.progress >= 1) {
+                    this.currentIndex++;
+                    this.progress = 0;
+                }
+
+                if (this.currentIndex < this.path.length - 1) {
+                    this.draw();
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        let neurons = [];
+        let activePulses = [];
+        let globalPulseTimer = 0;
+
+        function initOrganicNeuralNetwork() {
+            neurons = [];
+            activePulses = [];
+
+            // Create randomly positioned neurons
+            const neuronCount = 60;
+
+            for (let i = 0; i < neuronCount; i++) {
+                const x = Math.random() * particleCanvas.width;
+                const y = Math.random() * particleCanvas.height;
+                neurons.push(new Neuron(x, y));
+            }
+
+            // Create organic connections (not all neurons connect to all)
+            neurons.forEach((neuron, i) => {
+                const connectionCount = 2 + Math.floor(Math.random() * 4); // 2-5 connections
+
+                // Find nearest neurons
+                const distances = neurons.map((other, j) => {
+                    if (i === j) return { index: j, distance: Infinity };
+                    const dx = other.x - neuron.x;
+                    const dy = other.y - neuron.y;
+                    return { index: j, distance: Math.sqrt(dx * dx + dy * dy) };
+                });
+
+                distances.sort((a, b) => a.distance - b.distance);
+
+                // Connect to nearest neighbors (creates organic branching)
+                for (let k = 0; k < connectionCount && k < distances.length; k++) {
+                    const targetNeuron = neurons[distances[k].index];
+                    if (distances[k].distance < 250) { // Max connection distance
+                        neuron.connections.push(targetNeuron);
+                    }
+                }
+            });
+        }
+
+        let animationFrameId;
+        function animateOrganicNetwork() {
+            animationFrameId = requestAnimationFrame(animateOrganicNetwork);
+            particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+
+            // Draw nerve pathways with curves
+            neurons.forEach(neuron => {
+                if (neuron.alpha > 0.05) {
+                    neuron.connections.forEach(connected => {
+                        if (connected.alpha > 0.05) {
+                            const avgAlpha = (neuron.alpha + connected.alpha) / 2;
+
+                            // Draw curved line (Bezier curve for organic look)
+                            const midX = (neuron.x + connected.x) / 2 + (Math.random() - 0.5) * 20;
+                            const midY = (neuron.y + connected.y) / 2 + (Math.random() - 0.5) * 20;
+
+                            particleCtx.beginPath();
+                            particleCtx.moveTo(neuron.x, neuron.y);
+                            particleCtx.quadraticCurveTo(midX, midY, connected.x, connected.y);
+                            particleCtx.strokeStyle = `rgba(100, 149, 237, ${avgAlpha * 0.3})`;
+                            particleCtx.lineWidth = 1.5;
+                            particleCtx.stroke();
+                        }
+                    });
+                }
+            });
+
+            // Update and draw neurons
+            neurons.forEach(neuron => neuron.update());
+
+            // Random pulse generation (fires in random directions)
+            globalPulseTimer++;
+            if (globalPulseTimer > 15 && mouse.x != null && mouse.y != null) {
+                globalPulseTimer = 0;
+
+                // Find visible neurons
+                const visibleNeurons = neurons.filter(n => n.alpha > 0.2);
+
+                if (visibleNeurons.length > 3) {
+                    // Pick random starting neuron
+                    const startNeuron = visibleNeurons[Math.floor(Math.random() * visibleNeurons.length)];
+
+                    // Create random path (2-5 neurons)
+                    const pathLength = 2 + Math.floor(Math.random() * 4);
+                    const path = [startNeuron];
+                    let currentNeuron = startNeuron;
+
+                    for (let i = 0; i < pathLength - 1; i++) {
+                        if (currentNeuron.connections.length > 0) {
+                            // Pick random connection
+                            const nextNeuron = currentNeuron.connections[Math.floor(Math.random() * currentNeuron.connections.length)];
+                            if (nextNeuron.alpha > 0.1) {
+                                path.push(nextNeuron);
+                                currentNeuron = nextNeuron;
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+
+                    if (path.length > 1) {
+                        activePulses.push(new NervePulse(path));
+                    }
+                }
+            }
+
+            // Update and draw pulses
+            activePulses = activePulses.filter(pulse => pulse.update());
+        }
+
+        // Initialize and start
+        initOrganicNeuralNetwork();
+        animateOrganicNetwork();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            setParticleCanvasSize();
+            initOrganicNeuralNetwork();
+        });
+    </script>
+</body>
+
+</html>

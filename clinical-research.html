@@ -1,12 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinical Research - ECP</title>
-    <meta name="description" content="In-depth details on Clinical Research services.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Clinical Research - ECP Africa Regulatory Consulting</title>
+    <meta name="description"
+        content="Expert clinical research services across Africa. From trial design to regulatory submissions, we manage every aspect of your clinical research project.">
+    <link rel="icon" type="image/png" href="ecplogo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -17,11 +21,8 @@
 
         :root {
             --primary: #2c3e50;
-            --primary-dark: #1a252f;
-            --primary-light: #ecf0f1;
-            --accent: #e67e22;
-            --accent-dark: #d35400;
             --secondary: #8e44ad;
+            --accent: #e67e22;
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --bg-light: #f8fafc;
@@ -32,126 +33,151 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: var(--bg-light);
+            background-color: white;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
         }
+
+        /* Header - Transparent for visual appeal */
         header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            position: sticky;
+            background: transparent;
+            backdrop-filter: none;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            animation: slideDown 0.6s ease-out;
+            box-shadow: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 1rem 6%;
+            height: 120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-       /* Header */
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 1rem 4rem;
-    height: 120px; /* Fixed height for the header */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; /* Increased gap */
-    margin-left: 0; /* Ensure it starts from left */
-}
+        .logo img {
+            max-height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
 
-.logo {
-    width: auto;
-    height: auto;
-    background: none;
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary);
-    font-weight: 800;
-    font-size: 28px;
-    box-shadow: none;
-    margin-left: 0; /* Ensure no left margin */
-}
+        .brand-text h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0;
+        }
 
-.logo img {
-    max-height: 100px; /* Set max height for the logo */
-    width: auto; /* Maintain aspect ratio */
-    object-fit: contain;
-}
-
-.brand-text h1 {
-    font-size: 1.4rem; /* Slightly larger */
-    font-weight: 800;
-    color: var(--text-dark);
-    margin: 0;
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-.brand-text p {
-    font-size: 0.8rem; /* Slightly larger */
-    color: var(--text-muted);
-    margin: 0;
-    white-space: nowrap;
-}
-
-nav {
-    display: flex;
-    gap: 2.5rem; /* Increased gap */
-    align-items: center;
-}
-
-nav a {
-    text-decoration: none !important;
-}
-
-        nav > a:not(.cta-btn):not(.dropdown > a) {
+        .brand-text p {
+            font-size: 0.8rem;
             color: var(--text-muted);
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav>a:not(.cta-btn):not(.dropdown > a) {
+            color: var(--text-dark);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: color 0.3s ease;
             position: relative;
+            padding: 0.5rem 0;
         }
 
-        nav > a:not(.cta-btn):not(.dropdown > a):hover {
+        nav>a:not(.cta-btn):not(.dropdown > a)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav>a:not(.cta-btn):not(.dropdown > a):hover {
             color: var(--primary);
         }
 
-        /* Dropdown styles */
+        nav>a:not(.cta-btn):not(.dropdown > a):hover::after {
+            width: 100%;
+        }
+
         .dropdown {
             position: relative;
         }
 
+        .dropdown>a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown>a:hover {
+            color: var(--primary);
+        }
+
         .dropdown-menu {
             position: absolute;
-            top: calc(100% + 10px);
-            left: 0;
+            top: 100%;
+            left: -1rem;
             background: white;
-            min-width: 240px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
+            min-width: 260px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
             list-style: none;
-            padding: 1rem;
+            padding: 0;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             z-index: 1001;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(44, 62, 80, 0.05);
+            border-top: 3px solid var(--secondary);
         }
 
         .dropdown:hover .dropdown-menu {
@@ -162,128 +188,360 @@ nav a {
 
         .dropdown-menu li a {
             display: block;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.5rem;
             color: var(--text-muted);
             font-weight: 500;
             font-size: 0.9rem;
             white-space: nowrap;
-            border-radius: 8px;
-            transition: all 0.2s ease;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
         }
 
         .dropdown-menu li a:hover {
-            background-color: var(--bg-light);
+            background-color: rgba(142, 68, 173, 0.05);
             color: var(--primary);
-        }
-
-.dropdown > a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.dropdown > a:hover {
-    color: var(--primary);
-}
-
-        .dropdown > a .fas {
-            font-size: 0.7rem;
-            transition: transform 0.3s ease;
-        }
-
-        .dropdown:hover > a .fas {
-            transform: rotate(180deg);
+            padding-left: 1.8rem;
         }
 
         .cta-btn {
-            background: var(--primary);
-            color: white !important;
+            background: transparent;
+            color: var(--primary) !important;
             padding: 0.8rem 1.8rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(11, 108, 246, 0.2);
+            border-radius: 0;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: none;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            z-index: -1;
         }
 
         .cta-btn:hover {
+            color: white !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(11, 108, 246, 0.3);
+            box-shadow: 4px 4px 0 rgba(44, 62, 80, 0.2);
         }
-        .service-detail-header {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+
+        .cta-btn:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .service-hero {
+            padding: 12rem 4rem 8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
+        }
+
+        .service-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .service-hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 8rem 4rem;
+            background: white;
+        }
+
+        .section-header {
             text-align: center;
+            margin-bottom: 5rem;
         }
-        .service-detail-header h1 {
+
+        .section-header h2 {
             font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        .service-detail-content {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-        .service-detail-content h2 {
-            font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--primary);
         }
-        .service-detail-content p {
-            margin-bottom: 1.5rem;
+
+        .section-header p {
+            font-size: 1.1rem;
             color: var(--text-muted);
         }
-        footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem;
+            border: 1px solid rgba(44, 62, 80, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(142, 68, 173, 0.05);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--secondary);
             color: white;
-            padding: 4rem 2rem 2rem;
-            margin-top: 6rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 8rem 4rem;
+            background: var(--bg-light);
+        }
+
+        .process-steps {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 4rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-section .cta-btn {
+            background: white;
+            color: var(--primary) !important;
+            border-color: white;
+        }
+
+        .cta-section .cta-btn::before {
+            background: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 6rem 4rem 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
         }
 
         .footer-bottom {
-            max-width: 1200px;
-            margin: 3rem auto 0;
+            max-width: 1400px;
+            margin: 0 auto;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            opacity: 0.7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         @media (max-width: 968px) {
-            .nav-container {
-                padding: 1rem 2rem;
+            .service-hero {
+                padding: 10rem 2rem 6rem;
+            }
+
+            .service-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .service-detail-header h1 {
-                font-size: 2rem;
-            }
-
-            .service-detail-content {
-                margin: 2rem auto;
-                padding: 0 1rem;
+                gap: 3rem;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="nav-container">
@@ -294,13 +552,14 @@ nav a {
                     <p>Africa Regulatory Consulting Group</p>
                 </div>
             </div>
-            <nav id="mainNav">
+            <nav>
                 <div class="dropdown">
                     <a href="index.html#services">Services <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="strategic-regulatory-intelligence.html">Strategic Regulatory Intelligence</a></li>
                         <li><a href="regulatory-affairs.html">Regulatory Affairs</a></li>
                         <li><a href="clinical-research.html">Clinical Research</a></li>
+                        <li><a href="pharmacovigilance.html">Pharmacovigilance</a></li>
                         <li><a href="cgmp-compliance.html">cGMP Compliance</a></li>
                         <li><a href="medical-writing.html">Regulatory Medical Writing</a></li>
                         <li><a href="labeling-artwork.html">Labeling & Artwork</a></li>
@@ -321,20 +580,109 @@ nav a {
     </header>
 
     <main>
-        <section class="service-detail-header">
-            <h1>Clinical Research</h1>
-            <p>Advancing healthcare through expertly managed clinical trials.</p>
+        <section class="service-hero">
+            <div class="service-hero-content">
+                <h1>Clinical Research Services</h1>
+                <p>Advancing healthcare through expertly managed clinical trials across Africa. From trial design to
+                    regulatory submissions, we ensure your research is conducted efficiently, ethically, and in full
+                    compliance.</p>
+            </div>
         </section>
 
-        <section class="service-detail-content">
-            <h2>Service Overview</h2>
-            <p>Our Clinical Research service provides comprehensive support for conducting clinical trials in Africa. We leverage our extensive network and local expertise to ensure your trials are conducted efficiently, ethically, and in full compliance with regulatory standards. From site selection to regulatory submissions, we manage every aspect of your clinical research project.</p>
-            
-            <h2>Key Features</h2>
-            <p>We offer expert assistance with Clinical Trial Applications, ensuring your submissions to ethics committees and regulatory authorities are complete and compelling. Our Site Selection and Management services help you identify and manage the best clinical trial sites for your study. Additionally, we provide robust Pharmacovigilance and Safety Monitoring to ensure patient safety and data integrity throughout the trial. With our support, you can navigate the complexities of clinical research with confidence.</p>
+        <section class="features-section">
+            <div class="section-header">
+                <h2>Comprehensive Clinical Research Support</h2>
+                <p>End-to-end management of your clinical trials with local expertise</p>
+            </div>
 
-            <h2>Benefits</h2>
-            <p>By partnering with us, you gain access to a diverse patient population and a streamlined clinical trial process. Our local expertise helps you navigate unique regional challenges, reducing delays and ensuring your study stays on track. We are committed to upholding the highest ethical and quality standards, ensuring your research is credible and impactful. Let us help you bring innovative treatments to the patients who need them most.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-medical"></i></div>
+                    <h3>Clinical Trial Applications</h3>
+                    <p>Expert assistance with submissions to ethics committees and regulatory authorities. We ensure
+                        your applications are complete, compelling, and compliant with local requirements.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hospital"></i></div>
+                    <h3>Site Selection & Management</h3>
+                    <p>Identify and manage the best clinical trial sites for your study. Our extensive network ensures
+                        access to qualified investigators and diverse patient populations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Pharmacovigilance & Safety</h3>
+                    <p>Robust safety monitoring throughout your trial. We ensure patient safety and data integrity with
+                        comprehensive pharmacovigilance services.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Patient Recruitment</h3>
+                    <p>Leverage our local networks to recruit diverse patient populations efficiently. We understand
+                        cultural nuances and community engagement strategies.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Data Management</h3>
+                    <p>Ensure data quality and integrity with our rigorous data management protocols. We maintain the
+                        highest standards for clinical data collection and analysis.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Regulatory Compliance</h3>
+                    <p>Navigate complex regulatory requirements across multiple African jurisdictions. We ensure your
+                        trial meets all local and international standards.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="section-header">
+                <h2>Our Clinical Research Process</h2>
+                <p>A proven methodology for successful clinical trials</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Protocol Development</h3>
+                    <p>Design robust trial protocols tailored to African contexts</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Regulatory Submissions</h3>
+                    <p>Prepare and submit applications to ethics committees and authorities</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Site Activation</h3>
+                    <p>Select, qualify, and activate clinical trial sites</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Trial Execution</h3>
+                    <p>Manage day-to-day operations and monitor progress</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Data Analysis</h3>
+                    <p>Collect, validate, and analyze clinical data</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Start Your Clinical Trial?</h2>
+            <p>Partner with ECP for expert clinical research management across Africa</p>
+            <a href="contact.html" class="cta-btn">Get Started Today</a>
         </section>
     </main>
 
@@ -342,27 +690,62 @@ nav a {
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>ECP</h3>
-                <p>Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.</p>
+                <p>Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African
+                    markets.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4 style="color: var(--accent);">Quick Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="index.html#services" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Our Services</a></li>
-                    <li><a href="index.html#clients" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Our Clients</a></li>
-                    <li><a href="index.html#track-record" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Track Record</a></li>
-                    <li><a href="index.html#leadership" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Leadership Team</a></li>
+
+            <div class="footer-column footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#about-us">About Us</a></li>
+                    <li><a href="index.html#leadership">Leadership</a></li>
+                    <li><a href="index.html#track-record">Track Record</a></li>
+                    <li><a href="index.html#clients">Clients</a></li>
                 </ul>
             </div>
-            <div class="footer-contact">
-                <h4 style="color: var(--accent);">Contact Us</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Vision Plaza, Mombasa Rd, Nairobi</p>
-                <p><i class="fas fa-envelope"></i> companypharmacist.elymedicare@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +254 723 329 107</p>
+
+            <div class="footer-column footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="regulatory-affairs.html">Regulatory Affairs</a></li>
+                    <li><a href="clinical-research.html">Clinical Research</a></li>
+                    <li><a href="pharmacovigilance.html">Pharmacovigilance</a></li>
+                    <li><a href="strategic-regulatory-intelligence.html">Strategic Intelligence</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2023 ECP. All rights reserved.</p>
+            <p>&copy; 2023 Elymedicare Pharmacy (ECP). All rights reserved.</p>
+            <p>Designed for Excellence.</p>
         </div>
     </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
+
 </html>
