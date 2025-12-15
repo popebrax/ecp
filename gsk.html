@@ -204,38 +204,139 @@
             box-shadow: 0 6px 20px rgba(11, 108, 246, 0.3);
         }
 
-        .service-detail-header {
+        .case-hero {
             padding: 4rem 2rem;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            text-align: center;
         }
 
-        .service-detail-header h1 {
+        .case-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .case-hero h1 {
             font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .service-detail-content {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+        .case-hero p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
-        .service-detail-content h2 {
-            font-size: 1.8rem;
+        .client-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .csr-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .csr-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .csr-block {
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .csr-block h2 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--primary);
         }
 
-        .service-detail-content p, .service-detail-content ul {
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
+        .csr-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
         }
 
-        .service-detail-content ul {
-            list-style-position: inside;
+        .csr-block p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .csr-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .csr-block li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .csr-block li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .testimonial-section {
+            padding: 4rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         footer {
@@ -272,13 +373,20 @@
                 text-align: center;
             }
 
-            .service-detail-header h1 {
+            .case-hero h1 {
                 font-size: 2rem;
             }
 
-            .service-detail-content {
-                margin: 2rem auto;
-                padding: 0 1rem;
+            .case-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .csr-block {
+                padding: 1.5rem;
+            }
+
+            .testimonial-section {
+                padding: 2rem 1rem;
             }
         }
     </style>
@@ -321,26 +429,49 @@
     </header>
 
     <main>
-        <section class="service-detail-header">
-            <h1>GSK Projects</h1>
-            <p>Comprehensive regulatory strategy support for GSK's vaccine divestment project and pharmaceutical operations restructuring across Sub-Saharan Africa, with specific focus on Kenya and Nigeria markets.</p>
+        <section class="case-hero">
+            <div class="case-hero-content">
+                <div>
+                    <h1>GSK Projects</h1>
+                    <p>Comprehensive regulatory strategy support for GSK's vaccine divestment project and pharmaceutical operations restructuring across Sub-Saharan Africa, with specific focus on Kenya and Nigeria markets.</p>
+                </div>
+                <div class="client-logo">
+                    GSK
+                </div>
+            </div>
         </section>
 
-        <section class="service-detail-content">
-            <h2>Project Overview</h2>
-            <p>ECP provided critical regulatory intelligence and strategic guidance for GSK's complex vaccine divestment initiative and broader pharmaceutical operations restructuring across Sub-Saharan Africa. Our expertise in African regulatory landscapes enabled smooth transitions and compliance adherence. The project involved multi-faceted regulatory support including market analysis, regulatory pathway mapping, and compliance strategy development for both existing products and new market entries.</p>
-            
-            <h2>Key Achievements</h2>
-            <ul>
-                <li><strong>Vaccine Divestment Support:</strong> Provided regulatory strategy for PAREXEL's GSK Vx Divestment project, ensuring compliance across multiple jurisdictions</li>
-                <li><strong>Market Strategy Development:</strong> Developed comprehensive regulatory strategies for Kenya and Nigeria markets, addressing specific country requirements</li>
-                <li><strong>Operations Restructuring:</strong> Supported restructuring of pharmaceutical operations across Sub-Saharan Africa with regulatory compliance guidance</li>
-                <li><strong>Regulatory Intelligence:</strong> Delivered up-to-date regulatory intelligence on changing requirements across African markets</li>
-                <li><strong>Compliance Framework:</strong> Established robust compliance frameworks for ongoing operations in target markets</li>
-            </ul>
+        <section class="csr-section">
+            <div class="csr-container">
+                <div class="csr-block">
+                    <h2><div class="csr-icon"><i class="fas fa-exclamation-triangle"></i></div> Challenge</h2>
+                    <p>GSK faced complex regulatory requirements for vaccine divestment and pharmaceutical operations restructuring across Sub-Saharan Africa. Navigating multiple jurisdictions with varying regulatory frameworks for Kenya and Nigeria required deep local expertise, strategic market analysis, and continuous compliance monitoring amid evolving regulatory landscapes.</p>
+                </div>
 
-<h2>Impact & Results</h2>
-            <p>Our involvement in the GSK projects resulted in streamlined regulatory processes, reduced time-to-market for critical products, and enhanced compliance posture across Sub-Saharan African operations. The strategic guidance provided enabled GSK to navigate complex regulatory environments while maintaining operational efficiency. The project success demonstrated ECP's capability to handle large-scale, multi-jurisdictional regulatory challenges for global pharmaceutical leaders.</p>
+                <div class="csr-block">
+                    <h2><div class="csr-icon"><i class="fas fa-lightbulb"></i></div> Solution</h2>
+                    <p>ECP provided comprehensive regulatory intelligence and strategic guidance for GSK's vaccine divestment initiative and broader pharmaceutical operations restructuring. Our team conducted detailed market analysis, developed regulatory pathway strategies for Kenya and Nigeria, and established compliance frameworks for ongoing operations across Sub-Saharan Africa.</p>
+                </div>
+
+                <div class="csr-block">
+                    <h2><div class="csr-icon"><i class="fas fa-check-circle"></i></div> Results</h2>
+                    <p>Our involvement resulted in streamlined regulatory processes, reduced time-to-market for critical products, and enhanced compliance posture across Sub-Saharan African operations. The strategic guidance enabled GSK to navigate complex regulatory environments while maintaining operational efficiency, demonstrating ECP's capability to handle large-scale, multi-jurisdictional regulatory challenges.</p>
+                    <ul>
+                        <li>Successful vaccine divestment project management</li>
+                        <li>Comprehensive regulatory strategies for Kenya and Nigeria</li>
+                        <li>Streamlined operations restructuring across Sub-Saharan Africa</li>
+                        <li>Established robust compliance frameworks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial-section">
+            <div class="testimonial-content">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"ECP's regulatory expertise and strategic guidance were invaluable in navigating our vaccine divestment project and operations restructuring across Sub-Saharan Africa. Their deep understanding of African regulatory landscapes and local market dynamics made complex jurisdictional challenges manageable."</p>
+                <p class="testimonial-author">— GSK Project Lead</p>
+            </div>
         </section>
     </main>
 
