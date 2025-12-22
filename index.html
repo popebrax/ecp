@@ -588,6 +588,20 @@
             }
         }
 
+        @keyframes subtleZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .eyebrow {
             display: inline-block;
             color: var(--primary);
@@ -659,6 +673,7 @@
             mix-blend-mode: normal;
             filter: brightness(1.1) contrast(1.05);
             transition: filter 0.3s ease;
+            animation: subtleZoom 6s ease-in-out infinite;
         }
 
         .hero-svg img:hover {
