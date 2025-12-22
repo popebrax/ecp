@@ -7,7 +7,22 @@
     <title>ECP - Africa Regulatory Consulting Group</title>
     <meta name="description"
         content="ECP: Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.">
-    <link rel="icon" type="image/png" href="ecplogo.png">
+    <link rel="icon" type="image/png" href="LOGOECP.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ECP - Africa Regulatory Consulting Group",
+      "url": "https://ecpafricaregulatoryconsulting.com",
+      "logo": "https://ecpafricaregulatoryconsulting.com/LOGOECP.png",
+      "description": "ECP: Your trusted partner for regulatory intelligence, clinical research, and cGMP support across African markets.",
+      "sameAs": [
+        "https://www.facebook.com/yourpage",
+        "https://www.twitter.com/yourpage",
+        "https://www.linkedin.com/company/yourpage"
+      ]
+    }
+    </script>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700;800&display=swap"
         rel="stylesheet">
@@ -316,7 +331,7 @@
         }
 
         .logo img {
-            max-height: 100px;
+            max-height: 140px;
             /* Set max height for the logo */
             width: auto;
             /* Maintain aspect ratio */
@@ -512,18 +527,31 @@
 
         /* Hero Section */
         .hero {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
             padding: 12rem 4rem 6rem;
             /* Increased top padding for fixed header */
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1fr;
             gap: 4rem;
             /* Increased from 3rem */
             align-items: center;
             min-height: 100vh;
             position: relative;
+            overflow: hidden;
             /* Add this */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.4) 0%, rgba(26, 37, 47, 0.3) 100%);
+            z-index: 1.5;
+            pointer-events: none;
         }
 
         #particleCanvas {
@@ -532,17 +560,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 2;
         }
 
         .hero-content,
         .hero-svg {
-            z-index: 2;
+            z-index: 3;
             position: relative;
         }
 
         .hero-content {
             animation: fadeInLeft 0.8s ease-out;
+            max-width: 600px;
+            margin: 0;
+            grid-column: 1;
         }
 
         @keyframes fadeInLeft {
@@ -604,12 +635,34 @@
         }
 
         .hero-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            overflow: hidden;
         }
 
         .hero-svg img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: right center;
+            opacity: 0.9;
+            mix-blend-mode: normal;
+            filter: brightness(1.1) contrast(1.05);
+            transition: filter 0.3s ease;
+        }
+
+        .hero-svg img:hover {
+            filter: brightness(1.15) contrast(1.1);
         }
 
         .contact-section {
@@ -1086,6 +1139,11 @@
             left: 50%;
         }
 
+        .marker-north {
+            top: 18%;
+            left: 65%;
+        }
+
         .marker-global {
             top: 10%;
             right: 10%;
@@ -1216,6 +1274,11 @@
             left: 50%;
         }
 
+        .marker-north {
+            top: 18%;
+            left: 65%;
+        }
+
         .marker-global {
             top: 10%;
             right: 10%;
@@ -1316,6 +1379,10 @@
 
         .legend-south {
             background: rgba(245, 158, 11, 0.4);
+        }
+
+        .legend-north {
+            background: rgba(239, 68, 68, 0.4);
         }
 
         /* Team Grid */
@@ -2029,7 +2096,7 @@
     <header>
         <div class="nav-container">
             <div class="brand">
-                <div class="logo"><img src="ecplogo.png" alt="ECP Logo"></div>
+                <div class="logo"><img src="LOGOECP.png" alt="ECP Logo"></div>
                 <div class="brand-text">
                     <h1>ECP</h1>
                     <p>Africa Regulatory Consulting Group</p>
@@ -2095,7 +2162,7 @@
                 </div>
             </div>
             <div class="hero-svg">
-                <img src="medland.svg" alt="Medical Landing Page Illustration">
+                <img src="medland.jpeg" alt="Medical Landing Page Illustration">
             </div>
         </section>
 
@@ -2408,6 +2475,10 @@
                             <div class="marker-dot"></div>
                             <div class="marker-tooltip">Southern Africa</div>
                         </div>
+                        <div class="region-marker marker-north" data-region="north">
+                            <div class="marker-dot"></div>
+                            <div class="marker-tooltip">Northern Africa</div>
+                        </div>
                         <div class="region-marker marker-global" data-region="global">
                             <div class="marker-dot"></div>
                             <div class="marker-tooltip">Global Operations</div>
@@ -2426,6 +2497,8 @@
                                 <span class="country-tag">Rwanda</span>
                                 <span class="country-tag">Ethiopia</span>
                                 <span class="country-tag">Sudan</span>
+                                <span class="country-tag">South Sudan</span>
+                                <span class="country-tag">DRC Congo</span>
                             </div>
                         </div>
 
@@ -2438,6 +2511,11 @@
                                 <span class="country-tag">Ivory Coast</span>
                                 <span class="country-tag">Senegal</span>
                                 <span class="country-tag">Cameroon</span>
+                                <span class="country-tag">Chad</span>
+                                <span class="country-tag">Liberia</span>
+                                <span class="country-tag">Gambia</span>
+                                <span class="country-tag">Benin</span>
+                                <span class="country-tag">Guinea</span>
                             </div>
                         </div>
 
@@ -2450,6 +2528,17 @@
                                 <span class="country-tag">Zimbabwe</span>
                                 <span class="country-tag">Botswana</span>
                                 <span class="country-tag">Namibia</span>
+                                <span class="country-tag">Malawi</span>
+                                <span class="country-tag">Lesotho</span>
+                                <span class="country-tag">Eswatini</span>
+                            </div>
+                        </div>
+
+                        <div class="region-card" data-region="north">
+                            <h4><i class="fas fa-map-marker-alt"></i> Northern Africa</h4>
+                            <p>Our dedicated team provides expert regulatory support in Northern Africa.</p>
+                            <div class="country-list">
+                                <span class="country-tag">Egypt</span>
                             </div>
                         </div>
 
@@ -2478,6 +2567,10 @@
                     <div class="legend-item">
                         <div class="legend-color legend-south"></div>
                         <span>Southern Africa</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-north"></div>
+                        <span>Northern Africa</span>
                     </div>
                 </div>
             </div>
@@ -2523,6 +2616,20 @@
                             <div class="team-role">SADC Regulatory Experts</div>
                             <p class="team-desc">A dedicated team of professionals handling regulatory affairs and
                                 compliance across the SADC region.</p>
+                            <div class="team-link">Meet the Team <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="contact.html" style="text-decoration: none; color: inherit;">
+                    <div class="team-card">
+                        <div class="team-photo" style="display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-globe-africa" style="font-size: 4rem; color: #cbd5e1;"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Northern Africa Team</h4>
+                            <div class="team-role">Regulatory Experts</div>
+                            <p class="team-desc">Expert regulatory support and compliance services for the Northern Africa region, with focus on Egyptian market dynamics.</p>
                             <div class="team-link">Meet the Team <i class="fas fa-arrow-right"></i></div>
                         </div>
                     </div>
@@ -2815,7 +2922,7 @@
             const legendItems = document.querySelectorAll('.legend-item');
             let autoCycle = true;
             let currentRegion = 0;
-            const regions = ['east', 'west', 'south', 'global'];
+            const regions = ['east', 'west', 'south', 'north', 'global'];
             let cycleInterval;
 
             // Wait for the SVG to load
@@ -2827,11 +2934,14 @@
                 const countryRegions = {
                     // East Africa
                     'ke': 'east', 'tz': 'east', 'ug': 'east', 'rw': 'east', 'bi': 'east',
-                    'et': 'east', 'er': 'east', 'dj': 'east', 'so': 'east', 'ss': 'east',
+                    'et': 'east', 'er': 'east', 'dj': 'east', 'so': 'east', 'ss': 'east', 'cd': 'east',
                     // West Africa  
                     'ng': 'west', 'gh': 'west', 'ci': 'west', 'sn': 'west', 'gn': 'west',
                     'ml': 'west', 'ne': 'west', 'bf': 'west', 'lr': 'west', 'sl': 'west',
                     'tg': 'west', 'bj': 'west', 'mr': 'west', 'gm': 'west', 'gw': 'west',
+                    'td': 'west',
+                    // Northern Africa
+                    'eg': 'north',
                     // Southern Africa
                     'za': 'south', 'zm': 'south', 'zw': 'south', 'mw': 'south', 'mz': 'south',
                     'bw': 'south', 'na': 'south', 'sz': 'south', 'ls': 'south', 'ao': 'south'
@@ -2855,7 +2965,8 @@
                             if (!this.classList.contains('highlighted')) {
                                 this.style.fill = region === 'east' ? 'rgba(11, 108, 246, 0.4)' :
                                     region === 'west' ? 'rgba(16, 185, 129, 0.4)' :
-                                        'rgba(245, 158, 11, 0.4)';
+                                        region === 'north' ? 'rgba(239, 68, 68, 0.4)' :
+                                            'rgba(245, 158, 11, 0.4)';
                             }
                         });
 
@@ -2891,7 +3002,8 @@
                         if (highlight) {
                             country.style.fill = regionName === 'east' ? 'rgba(11, 108, 246, 0.2)' :
                                 regionName === 'west' ? 'rgba(16, 185, 129, 0.2)' :
-                                    'rgba(245, 158, 11, 0.2)';
+                                    regionName === 'north' ? 'rgba(239, 68, 68, 0.2)' :
+                                        'rgba(245, 158, 11, 0.2)';
                             country.classList.add('hover-highlight'); // Add a specific class for hover
                         } else {
                             // Only remove hover highlight if it's not the active region
@@ -2931,7 +3043,8 @@
                         regionCountries.forEach(country => {
                             country.style.fill = regionName === 'east' ? 'rgba(11, 108, 246, 0.4)' :
                                 regionName === 'west' ? 'rgba(16, 185, 129, 0.4)' :
-                                    'rgba(245, 158, 11, 0.4)';
+                                    regionName === 'north' ? 'rgba(239, 68, 68, 0.4)' :
+                                        'rgba(245, 158, 11, 0.4)';
                             country.classList.add('highlighted');
                         });
                     }
